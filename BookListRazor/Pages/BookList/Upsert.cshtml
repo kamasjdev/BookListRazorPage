@@ -1,0 +1,61 @@
+﻿@page
+@model BookListRazor.Pages.BookList.UpsertModel
+
+
+<br />
+
+<h2 class="text-info">@(Model.BookUpsert.Id!=0 ? "Edit" : "Create") Book</h2>
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        @if (Model.BookUpsert.Id != 0)
+        {
+            <input type="hidden" asp-for="BookUpsert.Id" />
+        }
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="BookUpsert.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="BookUpsert.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="BookUpsert.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="BookUpsert.Author"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="BookUpsert.Author" class="form-control" />
+            </div>
+            <span asp-validation-for="BookUpsert.Author" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="BookUpsert.ISBN"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="BookUpsert.ISBN" class="form-control" />
+            </div>
+            <span asp-validation-for="BookUpsert.ISBN" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">@(Model.BookUpsert.Id!=0 ? "Edit" : "Create")</button>
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
